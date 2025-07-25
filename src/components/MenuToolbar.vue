@@ -4,7 +4,7 @@
   <div class="menu-toolbar w-full h-full">
     <div>
       <img
-        style="height: 40px"
+        style="height: 34px"
         src="https://element-plus.org/images/element-plus-logo.svg"
         alt="Element logo"
       />

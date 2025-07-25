@@ -30,7 +30,7 @@ function clickButton() {
           <el-container class="h-full">
             <el-main class="overflow-x-auto">
               <el-button @click="clickButton" type="primary">按钮</el-button>
-              你好世界!你好世界!你好世界!你好世界!你好世界!你好世界!
+              <router-view />
             </el-main>
             <el-footer>Footer</el-footer>
           </el-container>

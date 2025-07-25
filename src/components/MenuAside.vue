@@ -1,57 +1,33 @@
 <template>
-  <el-menu class="el-menu-vertical" default-active="2" @open="handleOpen" @close="handleClose">
-    <el-sub-menu index="1">
+  <el-menu class="el-menu-vertical" :default-active="activeKey" :router="true">
+    <el-sub-menu index="home">
       <template #title>
-        <el-icon>
-          <location />
-        </el-icon>
-        <span>Navigator One</span>
+        <el-icon><HomeFilled /></el-icon>
+        <span>主页</span>
       </template>
-      <el-menu-item-group title="Group One">
-        <el-menu-item index="1-1">item one</el-menu-item>
-        <el-menu-item index="1-2">item two</el-menu-item>
-      </el-menu-item-group>
-      <el-menu-item-group title="Group Two">
-        <el-menu-item index="1-3">item three</el-menu-item>
-        <el-menu-item index="1-4">item four</el-menu-item>
-        <el-menu-item index="1-5">item five</el-menu-item>
-        <el-menu-item index="1-6">item six</el-menu-item>
-        <el-menu-item index="1-7">item seven</el-menu-item>
-        <el-menu-item index="1-8">item eight</el-menu-item>
-      </el-menu-item-group>
-      <el-sub-menu index="1-4">
-        <template #title>item four</template>
-        <el-menu-item index="1-4-1">item one</el-menu-item>
-      </el-sub-menu>
+      <el-menu-item route="/home" index="home-console">控制台</el-menu-item>
+      <el-menu-item route="/home/user" index="home-user">用户信息</el-menu-item>
     </el-sub-menu>
-    <el-menu-item index="2">
-      <el-icon><icon-menu /></el-icon>
-      <span>Navigator Two</span>
-    </el-menu-item>
-    <el-menu-item index="3" disabled>
-      <el-icon>
-        <document />
-      </el-icon>
-      <span>Navigator Three</span>
-    </el-menu-item>
-    <el-menu-item index="4">
-      <el-icon>
-        <setting />
-      </el-icon>
-      <span>Navigator Four</span>
-    </el-menu-item>
   </el-menu>
 </template>
 
 <script lang="ts" setup>
-import { Document, Menu as IconMenu, Location, Setting } from '@element-plus/icons-vue'
+import { ref, watch } from 'vue'
+import { useRoute } from 'vue-router'
 
-const handleOpen = (key: string, keyPath: string[]) => {
-  console.log(key, keyPath)
-}
-const handleClose = (key: string, keyPath: string[]) => {
-  console.log(key, keyPath)
-}
+const route = useRoute()
+const activeKey = ref('home-console')
+
+// 响应式监听路由变化
+watch(
+  () => route.meta.activeName,
+  (newVal) => {
+    if (typeof newVal === 'string') {
+      activeKey.value = newVal
+    }
+  },
+  { immediate: true },
+)
 </script>
 
 <style scoped>
