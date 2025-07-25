@@ -25,10 +25,10 @@ function clickButton() {
           <MenuAside />
         </el-scrollbar>
       </el-aside>
-      <el-scrollbar view-style="height: 100%">
-        <div class="min-w-[100vw] h-full">
+      <el-scrollbar class="w-full" view-style="height: 100%">
+        <div class="min-w-[100vw] md:min-w-full h-full">
           <el-container class="h-full">
-            <el-main class="overflow-x-auto">
+            <el-main>
               <el-button @click="clickButton" type="primary">按钮</el-button>
               <router-view />
             </el-main>
@@ -57,5 +57,10 @@ function clickButton() {
     0 2px 2px rgba(0, 0, 0, 0.06),
     0 0 4px rgba(0, 0, 0, 0.02);
   z-index: 1;
+}
+
+.main-container .el-footer {
+  text-align: center;
+  height: 32px;
 }
 </style>
